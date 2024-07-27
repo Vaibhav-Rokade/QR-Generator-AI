@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Generator</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <form>
+      <div class="container">
+        <h1>QR Generator.AI</h1>
+        <p>Enter a Text or URL:</p>
+        <input type="text" placeholder="Text or URL" id="qrtext" required />
+
+        <div id="imgBox" align="center">
+          <img src="" id="qrImage" align="center" />
+        </div>
+
+        <button onclick="generateQR()" type="button" id="button1">
+          Generate QR Code
+        </button>
+        <a href="" id="patha" download="qrcode.png">
+          <button type="button" onclick="setDownloadLink()">View QR</button>
+        </a>
+      </div>
+    </form>
+    <script>
+      let imgBox = document.getElementById("imgBox");
+      let qrImage = document.getElementById("qrImage");
+      let qrtext = document.getElementById("qrtext");
+      let downloadpath = document.getElementById("patha");
+
+      function generateQR() {
+        let qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + encodeURIComponent(qrtext.value);
+        qrImage.src = qrUrl;
+        downloadpath.href = qrUrl;
+        downloadpath.href = qrImage.src;
+      }
+    
+    </script>
+  </body>
+</html>
